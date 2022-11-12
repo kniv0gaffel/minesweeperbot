@@ -1,1 +1,1 @@
-# MINESWEEPER BOT
+# Minesweeper bot
