@@ -19,3 +19,6 @@ sudo python3 bot.py
 this bot is configured to be used at https://minesweeperonline.com/#150-left with  150% zoom. You may need to tweek some settings to get it working on your local machine
 use `test.py` to check mouseposition and colors
 
+<video width="320" height="240" controls>
+  <source src="./minesweeper.mp4" type="mp4">
+</video>
