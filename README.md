@@ -1,6 +1,6 @@
 # Minesweeper bot
 
-To start the bot you need to enter the enviorment
+To start the bot you need to enter the environment
 
 ~~~ bash
 
