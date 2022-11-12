@@ -6,7 +6,6 @@ import cv2
 import time
 import keyboard
 import sys
-import math
 
 
 mon = {'left': 44, 'top': 277, 'width': 900, 'height': 900}
@@ -153,7 +152,6 @@ def nextMove(tiles):
 def checkcolor(x,y,img):
     pixel = tuple(img[y-mon["top"],x-mon["left"]])
     print(pixel,end='\r',flush=True)
-    # time.sleep(.5)
 
 
 
@@ -181,9 +179,10 @@ def screenshot(sct):
     img = np.array(screenshot)
     img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
     tiles = processImg(img)
-    return nextMove(tiles)
-    # mss.tools.to_png(screenshot.rgb, screenshot.size, output='output.png')  # type: ignore
-    # return img
+    return img, tiles
+
+    # uncomment to save screengrab
+    # mss.tools.to_png(screenshot.rgb, screenshot.size, output='output.png')  # type: ignor
 
 
 
@@ -199,7 +198,8 @@ with mss.mss() as sct:
             print("TOTAL GUESSES: ",totguesses)
             break
 
-        guesses, probabilities = screenshot(sct)
+        img, tiles = screenshot(sct)
+        guesses, probabilities = nextMove(tiles)
         totguesses += guesses
    
         if len(probabilities) == 0:
@@ -207,10 +207,14 @@ with mss.mss() as sct:
             print("you made it, phew!\nTOTAL GUESSES: ",totguesses)
             break
         
+
+
+        # uncomment to get mouseposition
         # img = screenshot(sct)
         # x, y = pag.position()
-        # checkcolor(x,y,img)
         # positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
         # print(positionStr, end='\r')
             
 
+        # uncomment checkcolor() to get rgb values
+        # checkcolor(x,y,img)
