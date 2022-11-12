@@ -131,7 +131,7 @@ def nextMove(tiles):
     #   IF NO OTHER CHOICE → CHOOSE TILE WITH LOWEST CHANCE OF BEEING BOMB
 
     if len(toBeClicked) == 0 and len(toBeFlagged) == 0:
-        pick = (0,0)
+        pick = (15,15)
         lowestchance = 1.0
         for key in probabilities:
             thischance = probabilities[key]
@@ -143,17 +143,6 @@ def nextMove(tiles):
 
     return guesses, probabilities
     
-
-
-
-
-
-
-def checkcolor(x,y,img):
-    pixel = tuple(img[y-mon["top"],x-mon["left"]])
-    print(pixel,end='\r',flush=True)
-
-
 
 
 def printGrid():
@@ -179,13 +168,10 @@ def screenshot(sct):
     img = np.array(screenshot)
     img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
     tiles = processImg(img)
-    return img, tiles
-
-    # uncomment to save screengrab
-    # mss.tools.to_png(screenshot.rgb, screenshot.size, output='output.png')  # type: ignor
+    return nextMove(tiles)
 
 
-
+img = np.array
 probabilities = set()
 
 pag.click(x=mon['left'] + 15*30 + 15, y=mon['top'] + 15*30 + 15)
@@ -198,8 +184,7 @@ with mss.mss() as sct:
             print("TOTAL GUESSES: ",totguesses)
             break
 
-        img, tiles = screenshot(sct)
-        guesses, probabilities = nextMove(tiles)
+        guesses, probabilities = screenshot(sct)
         totguesses += guesses
    
         if len(probabilities) == 0:
@@ -209,12 +194,4 @@ with mss.mss() as sct:
         
 
 
-        # uncomment to get mouseposition
-        # img = screenshot(sct)
-        # x, y = pag.position()
-        # positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
-        # print(positionStr, end='\r')
-            
-
-        # uncomment checkcolor() to get rgb values
-        # checkcolor(x,y,img)
+        
