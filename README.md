@@ -20,4 +20,3 @@ this bot is configured to be used at https://minesweeperonline.com/#150-left wit
 use `test.py` to check mouseposition and colors
 
 ![](minesweeper.gif)
-![](minesweeperfail.gif)
