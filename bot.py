@@ -69,7 +69,7 @@ def processImg(img):
 
             tile = getTileFromPixel(tuple(centerPixel), tuple(topPixel), tuple(botrightPixel), tuple(topleftPixel))
             grid[i][j] = tile  # type: ignore
-            if tile == 1 or tile == 2 or tile == 3 or tile == 4 or tile == 5:
+            if tile == 1 or tile == 2 or tile == 3 or tile == 4 or tile == 5 or tile == 6:
                 relevantTiles[(i,j)] = tile
     return relevantTiles
         

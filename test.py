@@ -6,7 +6,7 @@ import keyboard
 
 
 
-mon = {'left': 44, 'top': 277, 'width': 900, 'height': 900}
+mon = {'left': 0, 'top': 0, 'width': 1500, 'height': 1000}
 
 
 def screenshot(sct):
@@ -14,19 +14,19 @@ def screenshot(sct):
     img = np.array(screenshot)
     img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
     # uncomment to save screengrab
-    # mss.tools.to_png(screenshot.rgb, screenshot.size, output='output.png')  # type: ignor
+    mss.tools.to_png(screenshot.rgb, screenshot.size, output='output.png')  # type: ignor
+    return img
+
 
 
 def checkcolor(x,y,img):
     pixel = tuple(img[y-mon["top"],x-mon["left"]])
-    print(pixel,end='\r',flush=True)
+    print("\t\t\t",pixel,end='\r',flush=True)
 
 
 
 with mss.mss() as sct:
     while True:
-
-
 
         # uncomment to get mouseposition
         x, y = pag.position()
@@ -34,8 +34,9 @@ with mss.mss() as sct:
         print(positionStr, end='\r')
             
         img = screenshot(sct)
+
         # uncomment checkcolor() to get rgb values
-        # checkcolor(x,y,img)
+        checkcolor(x,y,img)
 
         if keyboard.is_pressed('e'):
             break
